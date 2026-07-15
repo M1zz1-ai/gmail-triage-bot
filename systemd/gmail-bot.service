@@ -1,0 +1,30 @@
+# gmail-triage-bot systemd unit (TEMPLATE — not installed by this repo).
+#
+# Install (Linux host):
+#   1. Edit User= and the WorkingDirectory/ExecStart paths below.
+#   2. Ensure ~/.config/gmail-triage-bot/.env exists (chmod 600) with all required keys,
+#      and that GMAIL_REFRESH_TOKEN is set (run `python -m gmail_bot.auth` once).
+#   3. cp systemd/gmail-bot.service /etc/systemd/system/
+#   4. systemctl daemon-reload && systemctl enable --now gmail-bot
+#
+# State DB lives at ~/.local/share/gmail-bot/state.db (auto-created).
+
+[Unit]
+Description=Gmail -> Telegram triage bot with AI-drafted replies
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=CHANGE_ME
+WorkingDirectory=/home/CHANGE_ME/gmail-triage-bot
+ExecStart=/home/CHANGE_ME/.local/bin/uv run python -m gmail_bot
+Restart=on-failure
+RestartSec=10
+# SIGTERM from a deliberate stop/restart must not count as a failure.
+SuccessExitStatus=143
+# The process is built to survive transient Gmail/Telegram/LLM errors on its
+# own; Restart=on-failure only covers a hard process exit (e.g. OOM).
+
+[Install]
+WantedBy=multi-user.target

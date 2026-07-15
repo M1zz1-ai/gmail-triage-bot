@@ -1,0 +1,43 @@
+[project]
+name = "gmail-triage-bot"
+version = "0.1.0"
+description = "Resilient Gmail->Telegram triage bot with AI-drafted replies — a failed poll never kills the process."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "M1zz1-ai" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "aiogram>=3.0",
+    "google-api-python-client>=2.0",
+    "google-auth>=2.0",
+    "google-auth-oauthlib>=1.0",
+    "anthropic>=0.40",
+    "python-dotenv>=1.0",
+    "openai>=1.60",
+]
+
+[project.scripts]
+gmail-triage-bot = "gmail_bot.__main__:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["gmail_bot"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

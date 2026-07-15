@@ -1,0 +1,15 @@
+# Secrets — never commit. The real config lives at ~/.config/m1zz1/.env (outside repo).
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Local state DB
+*.db
