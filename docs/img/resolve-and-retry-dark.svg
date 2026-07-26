@@ -30,5 +30,5 @@
           <path d="M456 84 L456 111 L470 111"/>
         </g>
         <text x="0" y="172" font-family="ui-monospace,monospace" font-size="9"
-          fill="#EDE6DA" opacity=".6">THE BUG WAS NEVER THE 404 &mdash; IT WAS TREATING ONE SHAPE AS THE ONLY SHAPE</text>
+          fill="#EDE6DA" opacity=".6">THE BUG WAS NEVER THE 404 — IT WAS TREATING ONE SHAPE AS THE ONLY SHAPE</text>
       </svg>

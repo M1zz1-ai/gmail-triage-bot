@@ -1,0 +1,72 @@
+<svg viewBox="-16.0 -16.0 652.0 412.0" width="652.0" height="412.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A 120-second poll loop queries the Gmail API for unread Primary mail, filters it, checks SQLite for ids already seen, and sends only new ones as Telegram cards; card buttons act back on Gmail, the draft path goes through the model to a preview and only becomes a Gmail draft on accept, and an expired grant sends a re-auth notice without stopping the loop"><rect x="-16.0" y="-16.0" width="652.0" height="412.0" fill="#0E0A14"/>
+        <defs><symbol id="i-py" viewBox="0 0 24 24"><path fill="currentColor" d="M11.9 1.5c-2.6 0-4.4.8-4.4 3v2.3h4.5v.8H5.7c-2.2 0-4.1 1.3-4.1 4.5s1.7 4.6 3.9 4.6h1.6v-2.8c0-2.4 2.1-4.5 4.5-4.5h4.5c2 0 3.6-1.6 3.6-3.6V4.5c0-1.9-1.6-2.6-3.6-2.9-1.4-.1-2.8-.1-4.2-.1Zm-2.4 2c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9Z"/><path fill="currentColor" opacity=".55" d="M12.1 22.5c2.6 0 4.4-.8 4.4-3v-2.3H12v-.8h6.3c2.2 0 4.1-1.3 4.1-4.5s-1.7-4.6-3.9-4.6h-1.6v2.8c0 2.4-2.1 4.5-4.5 4.5H7.9c-2 0-3.6 1.6-3.6 3.6v1.3c0 1.9 1.6 2.6 3.6 2.9 1.4.1 2.8.1 4.2.1Zm2.4-2c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9Z"/></symbol>
+          <marker id="ag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0 0 L7 3.5 L0 7 z" fill="#EDE6DA"/></marker>
+          <marker id="agf" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0 0 L7 3.5 L0 7 z" fill="#FF6B5E"/></marker>
+        </defs>
+        <g font-family="ui-monospace,monospace" font-size="9" fill="#EDE6DA">
+          <text x="470" y="14" opacity=".85">GMAIL API</text>
+          <line x1="470" y1="20" x2="560" y2="20" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="470" y="36" opacity=".5">category:primary</text>
+          <text x="470" y="49" opacity=".5">is:unread</text>
+
+          <use color="#EDE6DA" href="#i-py" x="0" y="82" width="12" height="12" opacity=".85"/>
+          <text x="18" y="92" opacity=".85">ONE PROCESS · systemd</text>
+
+          <rect x="0" y="104" width="150" height="38" fill="#171122" stroke="#B57BFF" stroke-width="2"/>
+          <text x="10" y="122" fill="#B57BFF">poll loop</text>
+          <text x="10" y="135" fill="#B57BFF" opacity=".75">every 120 s</text>
+
+          <rect x="0" y="174" width="150" height="38" fill="#171122" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="10" y="192">triage filter</text>
+          <text x="10" y="205" opacity=".55">unread · Primary · cap 20</text>
+
+          <rect x="0" y="244" width="150" height="38" fill="#171122" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="10" y="262">sqlite</text>
+          <text x="10" y="275" opacity=".55">seen ids · drafts</text>
+
+          <rect x="236" y="26" width="150" height="46" fill="none" stroke="#FF6B5E" stroke-width="1" stroke-dasharray="4 3"/>
+          <text x="246" y="48" fill="#FF6B5E">re-auth notice</text>
+          <text x="246" y="61" fill="#FF6B5E" opacity=".7">the loop keeps running</text>
+
+          <rect x="236" y="174" width="150" height="38" fill="#171122" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="246" y="192">telegram card</text>
+          <text x="246" y="205" opacity=".55">read · trash · draft</text>
+
+          <rect x="236" y="244" width="150" height="34" fill="#171122" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="246" y="265">draft preview</text>
+
+          <rect x="236" y="310" width="150" height="34" fill="#171122" stroke="#B57BFF" stroke-width="2"/>
+          <text x="246" y="331" fill="#B57BFF">accept — you</text>
+
+          <rect x="470" y="244" width="150" height="34" fill="#171122" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="480" y="265">the model</text>
+          <text x="470" y="294" opacity=".5">regenerate loops here</text>
+
+          <text x="470" y="325" opacity=".85">GMAIL DRAFT</text>
+          <line x1="470" y1="331" x2="580" y2="331" stroke="#EDE6DA" stroke-width="1"/>
+          <text x="470" y="347" opacity=".5">on the thread, unsent</text>
+
+          <text x="0" y="322" opacity=".6">THE ONLY WRITE TO GMAIL</text>
+          <text x="0" y="340" opacity=".6">IS A DRAFT, AND ONLY</text>
+          <text x="0" y="358" opacity=".6">AFTER YOU PRESS ACCEPT</text>
+        </g>
+
+        <g stroke="#EDE6DA" stroke-width="1.5" fill="none" marker-end="url(#ag)" opacity=".85">
+          <path d="M150 116 L596 116 L596 26"/>
+          <path d="M470 66 L470 90 L196 90 L196 186 L156 186"/>
+          <path d="M75 212 L75 244"/>
+          <path d="M150 263 L206 263 L206 193 L230 193"/>
+          <path d="M311 212 L311 244"/>
+          <path d="M386 261 L464 261"/>
+          <path d="M311 278 L311 304"/>
+          <path d="M386 327 L440 327 L440 339 L464 339"/>
+        </g>
+        <path d="M545 278 L545 296 L410 296 L410 272 L392 272" stroke="#EDE6DA"
+          stroke-width="1" fill="none" opacity=".4" marker-end="url(#ag)"/>
+        <path d="M470 60 L410 60 L410 49 L392 49" stroke="#FF6B5E" stroke-width="1.5"
+          fill="none" stroke-dasharray="4 3" marker-end="url(#agf)"/>
+        <text x="398" y="80" font-family="ui-monospace,monospace" font-size="8"
+          fill="#FF6B5E">invalid_grant</text>
+      </svg>

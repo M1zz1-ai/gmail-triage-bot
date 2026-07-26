@@ -19,22 +19,10 @@ logged and retried, never fatal.**
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    TIMER[poll loop<br/>every 120s] --> GMAIL[Gmail API]
-    GMAIL -->|"q=in:inbox category:primary is:unread"| TRIAGE[Triage filter<br/>Primary unread, cap 20]
-    TRIAGE --> STATE[(SQLite state<br/>seen ids, drafts)]
-    STATE -->|only unseen| CARD[Telegram card<br/>inline buttons]
-
-    CARD -->|Mark read| GMAIL
-    CARD -->|Trash| GMAIL
-    CARD -->|Draft reply| LLM[OpenAI reply draft<br/>fixed signature format]
-    LLM --> PREVIEW[Draft preview card]
-    PREVIEW -->|Regenerate| LLM
-    PREVIEW -->|Accept| DRAFT[Gmail draft created]
-
-    GMAIL -. invalid_grant/RefreshError .-> ALERT[Alert owner,<br/>keep polling]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/architecture-dark.svg">
+  <img alt="A 120-second poll loop queries Gmail for unread Primary mail, filters it, checks SQLite for ids already seen and sends only new ones as Telegram cards; buttons act back on Gmail, the draft path goes through the model to a preview and becomes a Gmail draft only on accept, and an expired grant sends a re-auth notice without stopping the loop" src="docs/img/architecture-light.svg" width="100%">
+</picture>
 
 ## Features
 

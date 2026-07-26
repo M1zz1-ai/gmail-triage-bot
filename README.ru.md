@@ -19,22 +19,10 @@ Telegram / LLM логируются и повторяются, но никогд
 
 ## Архитектура
 
-```mermaid
-flowchart TD
-    TIMER[цикл опроса<br/>каждые 120с] --> GMAIL[Gmail API]
-    GMAIL -->|"q=in:inbox category:primary is:unread"| TRIAGE[Фильтр триажа<br/>Primary непрочитанные, лимит 20]
-    TRIAGE --> STATE[(состояние в SQLite<br/>виденные id, черновики)]
-    STATE -->|только новые| CARD[карточка Telegram<br/>inline-кнопки]
-
-    CARD -->|Прочитано| GMAIL
-    CARD -->|В корзину| GMAIL
-    CARD -->|Составить ответ| LLM[черновик от OpenAI<br/>фикс. формат подписи]
-    LLM --> PREVIEW[карточка-превью черновика]
-    PREVIEW -->|Перегенерировать| LLM
-    PREVIEW -->|Принять| DRAFT[создан черновик Gmail]
-
-    GMAIL -. invalid_grant/RefreshError .-> ALERT[уведомить владельца,<br/>продолжать опрос]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/architecture-dark.svg">
+  <img alt="Опрос раз в 120 секунд забирает из Gmail непрочитанное из Primary, фильтрует, сверяется с SQLite по уже виденным id и отправляет карточкой только новое; кнопки действуют обратно в Gmail, путь черновика идёт через модель в предпросмотр и становится черновиком Gmail только после подтверждения, а протухший грант шлёт просьбу переавторизоваться, не останавливая петлю" src="docs/img/architecture-light.svg" width="100%">
+</picture>
 
 ## Возможности
 
