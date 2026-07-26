@@ -1,0 +1,34 @@
+<svg viewBox="-16.0 -16.0 652.0 222.0" width="652.0" height="222.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A reply callback carrying a message id succeeds for a standalone message but returns 404 inside a thread; the fix resolves the real thread id and retries once, and only a genuinely missing target becomes a clean card"><rect x="-16.0" y="-16.0" width="652.0" height="222.0" fill="#F4F0E8"/>
+        <g font-family="ui-monospace,monospace" font-size="9" fill="#1A1420">
+          <text x="0" y="12" opacity=".6">fetch by messageId</text>
+
+          <rect x="0" y="26" width="180" height="28" fill="#EAE4D8"
+            stroke="#1A1420" stroke-width="1"/>
+          <text x="10" y="45">standalone message</text>
+          <text x="196" y="45" opacity=".8">ok</text>
+
+          <rect x="0" y="70" width="180" height="28" fill="#EAE4D8"
+            stroke="#C2382C" stroke-width="1"/>
+          <text x="10" y="89">same message, in a thread</text>
+          <text x="196" y="89" fill="#C2382C">404</text>
+
+          <rect x="260" y="70" width="180" height="28" fill="#EAE4D8"
+            stroke="#6B3FBF" stroke-width="2"/>
+          <text x="270" y="89" fill="#6B3FBF">resolve threadId, retry once</text>
+
+          <rect x="470" y="44" width="150" height="26" fill="#EAE4D8"
+            stroke="#1A1420" stroke-width="1"/>
+          <text x="480" y="61">the draft, as asked</text>
+
+          <rect x="470" y="98" width="150" height="26" fill="none"
+            stroke="#1A1420" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="480" y="115" opacity=".75">"reply target gone"</text>
+          <text x="470" y="136" opacity=".5">a card, never a stack trace</text>
+        </g>
+        <g stroke="#1A1420" stroke-width="1" fill="none" opacity=".55">
+          <path d="M224 84 L260 84"/><path d="M440 84 L456 84 L456 57 L470 57"/>
+          <path d="M456 84 L456 111 L470 111"/>
+        </g>
+        <text x="0" y="172" font-family="ui-monospace,monospace" font-size="9"
+          fill="#1A1420" opacity=".6">THE BUG WAS NEVER THE 404 &mdash; IT WAS TREATING ONE SHAPE AS THE ONLY SHAPE</text>
+      </svg>

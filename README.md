@@ -15,6 +15,8 @@ logged and retried, never fatal.**
 
 > 🇷🇺 Русская версия: **[README.ru.md](README.ru.md)**
 
+📊 The same story as a full-screen deck: **[it went quiet, nothing had crashed](https://m1zz1-ai.github.io/gmail-triage-bot/)** — eight screens on the expired token that killed v1, and the loop that survives it.
+
 ## Architecture
 
 ```mermaid
@@ -108,6 +110,12 @@ token is refreshed). More broadly, every poll cycle is `try/except`-guarded —
 "poll cycle failed; will retry next cycle" — so one bad message, Gmail hiccup, or
 Telegram timeout never ends the process (`gmail_bot/__main__.py`).
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/stopping-is-not-error-handling-dark.svg">
+  <img alt="Above: a chain of poll cycles ending permanently at the first failed one, with no alert. Below: the same chain where the failed cycle sends a re-auth message and the loop continues, recovering on a later cycle" src="docs/img/stopping-is-not-error-handling-light.svg" width="100%">
+</picture>
+
+
 **The 404 reply-target race.** Early reply callbacks encoded a *messageId* as the
 reply target. That works for a standalone message, but the moment a message lives
 inside an existing Gmail thread, fetching it by that id 404s — so "Draft reply"
@@ -116,6 +124,12 @@ resolve-and-retry: on a 404, the bot resolves the message's real `threadId` and
 retries the fetch once, and only a genuinely vanished target degrades to a clean
 "reply target gone" card instead of a stack trace (`_resolve_thread` in
 `gmail_bot/telegram_bot.py`).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/resolve-and-retry-dark.svg">
+  <img alt="Fetching a reply target by message id succeeds for a standalone message and returns 404 inside a thread; the fix resolves the real thread id and retries once, and only a genuinely missing target becomes a clean card" src="docs/img/resolve-and-retry-light.svg" width="100%">
+</picture>
+
 
 **Anthropic→OpenAI in one seam.** Draft generation depends only on a narrow
 contract — `build_draft_builder(config)` returns something with a single
